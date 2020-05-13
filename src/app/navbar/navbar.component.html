@@ -1,0 +1,33 @@
+<mat-toolbar class="mat-elevation-z6" fxHide.gt-xs="true">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/">Recherche</button>
+      <button mat-menu-item routerLink="/favoris">Favoris</button>
+      <button mat-menu-item routerLink="/profil">Profil</button>
+      <button mat-menu-item routerLink="/connexion">Conexion</button>
+    </mat-menu>
+  </button>
+</mat-toolbar>
+
+<mat-toolbar fxHide.xs="true" class="mat-elevation-z6 navbar">
+  <a class="brand" mat-button routerLink="/recherche" fxHide.lt-md="true">
+    <img src="../../../assets/laposte.png" alt="" class="logo">
+  </a>
+
+  <div fxLayout="row" fxLayoutAlign.gt-sm="flex-end center" class="nav" fxLayoutAlign="center center">
+
+    <a mat-button routerLink="/">
+      <span class="mat-title" >Recherche</span>
+    </a>
+    <a mat-button routerLink="/favoris">
+      <span class="mat-title" >Favoris</span>
+    </a>
+    <a mat-button routerLink="/profil">
+      <span class="mat-title" >Profil</span>
+    </a>
+    <a mat-button routerLink="/connexion">
+      <span class="mat-title" >Connexion</span>
+    </a>
+  </div>
+</mat-toolbar>

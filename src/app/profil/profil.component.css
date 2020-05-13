@@ -1,0 +1,10 @@
+.mat-display-2 {
+  text-align: center;
+  margin: 50px auto 100px auto;
+}
+.field-container {
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 420px;
+}

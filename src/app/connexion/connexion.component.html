@@ -1,0 +1,18 @@
+<div class="page" fxLayout fxLayoutAlign="center center">
+  <form [formGroup]="connexionForm" (ngSubmit)="onSubmit(connexionForm.value)" class="form-container mat-elevation-z2">
+    <div class="form-title mat-headline">Connexion</div>
+    <div class="form-content">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Entrez votre code RH" formControlName="codeRH">
+        <mat-error *ngIf="submitted && f.codeRH.errors">Vous devez saisir un code RH</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Entrez votre mot de passe" formControlName="motDePasse">
+        <mat-error *ngIf="submitted && f.motDePasse.errors">Vous devez saisir un mot de passe</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout fxLayoutAlign="center">
+      <button mat-raised-button type="submit" color="primary">Se connecter</button>
+    </div>
+  </form>
+</div>
