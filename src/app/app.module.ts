@@ -51,9 +51,11 @@ const routes: Routes =  [
         RouterModule.forRoot(routes),
         MatMenuModule,
         MatFormFieldModule,
+        MatInputModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        MatSnackBarModule,
         MatListModule
     ],
   providers: [],

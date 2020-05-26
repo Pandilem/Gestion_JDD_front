@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RechercherService } from './rechercher.service';
+import { InfoContratService } from './info-contrat.service';
 
-describe('RechercherService', () => {
+describe('InfoContratService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: RechercherService = TestBed.get(RechercherService);
+    const service: InfoContratService = TestBed.get(InfoContratService);
     expect(service).toBeTruthy();
   });
 });

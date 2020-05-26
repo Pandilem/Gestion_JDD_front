@@ -9,9 +9,9 @@
 
 
 <mat-selection-list >
-  <mat-list-option *ngFor="let critere of criteres$">
-    {{critere}}
+  <mat-list-option *ngFor="let critere of criteres$ | async">
+    {{critere.nom}}
   </mat-list-option>
 </mat-selection-list>
-
+<button mat-raised-button  onclick="searchJdd()">Rechercher un JDD</button>
 
