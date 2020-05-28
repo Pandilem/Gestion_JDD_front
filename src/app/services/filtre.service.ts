@@ -31,4 +31,9 @@ export class FiltreService {
     return this.http.get<Filtre[]>(`${this.BASE_URL}/all`)
       .pipe(catchError(this.es.handleError()));
   }
+
+  putFilter(updateFiltre: Filtre): Observable<Filtre> {
+    return this.http.put<Filtre>(`${this.BASE_URL}/update`, updateFiltre)
+      .pipe(catchError(this.es.handleError()));
+  }
 }

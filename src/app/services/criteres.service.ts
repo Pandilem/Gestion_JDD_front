@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ErrorService} from './error.service';
 import {Observable} from 'rxjs';
 
-import {catchError} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import {Criteres} from '../model/criteres';
 
 @Injectable({
@@ -20,30 +20,25 @@ export class CriteresService {
    * Obtenir la liste des criteres dont le nom contient le mot fourni
    * @param nom Le mot recherché
    */
-  getCriteresByNom(nom: string): any {
-    /*return this.http.get<Criteres[]>(`${this.BASE_URL}/findByNom?nom=${nom}`)
-      .pipe(catchError(this.es.handleError()));*/
-    this.http.get<Criteres[]>(`${this.BASE_URL}/findByNom?nom=${nom}`).subscribe(criteresList => {
-      this.criteresList = criteresList;
-      console.log(criteresList);
-    });
+  getCriteresByNom(nom: string): Observable<Criteres[]> {
+    return this.http.get<Criteres[]>(`${this.BASE_URL}/findByNom?nom=${nom}`)
+      .pipe(catchError(this.es.handleError()));
   }
 
   /**
    * Obtenir la liste de tout les criteres
    */
-  getAllCriteres(): any {
-    this.http.get<Criteres[]>(`${this.BASE_URL}/all`).subscribe(criteresList => {
-        this.criteresList = criteresList;
-        console.log(criteresList);
-      });
-  }
-  getCriteresByNomLike(nom: string): any {
-    /*return this.http.get<Criteres[]>(`${this.BASE_URL}/findByNom?nom=${nom}`)
-      .pipe(catchError(this.es.handleError()));*/
-    this.http.get<Criteres[]>(`${this.BASE_URL}/findByNomLike?nom=${nom}`).subscribe(criteresList => {
+  getAllCriteres(): Observable<Criteres[]> {
+    return this.http.get<Criteres[]>(`${this.BASE_URL}/all`)
+      .pipe(tap(criteres => console.log(criteres)), catchError(this.es.handleError()));
+      }
+
+  getCriteresByNomLike(nom: string): Observable<Criteres[]> {
+    return this.http.get<Criteres[]>(`${this.BASE_URL}/findByNomLike?nom=${nom}`)
+      .pipe(catchError(this.es.handleError()));
+   /* this.http.get<Criteres[]>(`${this.BASE_URL}/findByNomLike?nom=${nom}`).subscribe(criteresList => {
       this.criteresList = criteresList;
       console.log(criteresList);
-    });
+    });*/
   }
 }

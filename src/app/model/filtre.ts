@@ -6,6 +6,6 @@ export class Filtre {
   id: number;
   nom: string;
   descriptif: string;
-  user: Utilisateur;
+  utilisateur: Utilisateur;
   criteres: Criteres[];
 }

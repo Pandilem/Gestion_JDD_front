@@ -56,7 +56,15 @@ const routes: Routes =  [
         ReactiveFormsModule,
         HttpClientModule,
         MatSnackBarModule,
-        MatListModule
+        MatListModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatExpansionModule,
+        MatNativeDateModule,
+        MatProgressSpinnerModule,
+        MatRadioModule,
+        MatSelectModule,
+        MatSidenavModule
     ],
   providers: [],
   bootstrap: [AppComponent]

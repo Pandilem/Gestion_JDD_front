@@ -20,11 +20,16 @@ export class UtilisateurService {
   }
 
   updateUser(user: Utilisateur): Observable<Utilisateur> {
-    return this.http.put<Utilisateur>(`http://localhost:8080/api/apprenants/update`, user)
+    return this.http.put<Utilisateur>(`${this.BASE_URL}/update`, user)
       .pipe(catchError(this.es.handleError()));
   }
   getUserByCodeRH(codeRH: string) {
     return this.http.get<Utilisateur>(`${this.BASE_URL}/findBycodeRH?codeRH=${codeRH}`)
+      .pipe(catchError(this.es.handleError()));
+  }
+
+  getUserById(userId: number) {
+    return this.http.get<Utilisateur>(`${this.BASE_URL}/findById?id=${userId}`)
       .pipe(catchError(this.es.handleError()));
   }
 }
