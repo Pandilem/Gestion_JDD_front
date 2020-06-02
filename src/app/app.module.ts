@@ -22,12 +22,15 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CardComponent } from './card/card.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes =  [
-  {path: 'connexion', component: ConnexionComponent},
-  {path: '', component: RechercheComponent},
+  {path: '', component: ConnexionComponent},
+  {path: 'recherche', component: RechercheComponent},
   {path: 'profil', component: ProfilComponent},
-  {path: 'favoris', component: FavorisComponent}
+  {path: 'favoris', component: FavorisComponent},
+  {path: 'result', component: ResultComponent},
+  {path: 'recherche/result', component: ResultComponent}
 ];
 
 @NgModule({
@@ -40,31 +43,31 @@ const routes: Routes =  [
     ConnexionComponent,
     PageComponent,
     FooterComponent,
-    CardComponent
+    CardComponent,
+    ResultComponent
   ],
     imports: [
         MatToolbarModule,
         BrowserModule,
+        HttpClientModule,
         BrowserAnimationsModule,
-        RouterModule,
         MatIconModule,
         RouterModule.forRoot(routes),
         MatMenuModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatListModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatSnackBarModule,
-        MatListModule,
-        MatButtonModule,
-        MatDatepickerModule,
-        MatExpansionModule,
-        MatNativeDateModule,
-        MatProgressSpinnerModule,
         MatRadioModule,
-        MatSelectModule,
-        MatSidenavModule
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSidenavModule,
+      MatSelectModule,
+      FormsModule,
+      MatSnackBarModule,
+      MatExpansionModule,
+      MatProgressSpinnerModule
     ],
   providers: [],
   bootstrap: [AppComponent]

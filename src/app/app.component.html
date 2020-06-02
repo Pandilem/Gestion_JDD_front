@@ -1,2 +1,2 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="authService.isLoggedIn()"></app-navbar>
 <app-page></app-page>

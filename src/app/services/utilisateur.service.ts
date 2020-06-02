@@ -15,7 +15,7 @@ export class UtilisateurService {
               private es: ErrorService) {
   }
 
-  checkIfEmailExists(email: string) {
+  checkIfCodeRhExists(email: string) {
     return this.http.get(`${this.BASE_URL}/emailExists?email=${email}`);
   }
 
@@ -31,5 +31,11 @@ export class UtilisateurService {
   getUserById(userId: number) {
     return this.http.get<Utilisateur>(`${this.BASE_URL}/findById?id=${userId}`)
       .pipe(catchError(this.es.handleError()));
+  }
+  storeUser(user: Utilisateur) {
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
+  getStoreUser(): Utilisateur {
+    return JSON.parse(sessionStorage.getItem('user'));
   }
 }

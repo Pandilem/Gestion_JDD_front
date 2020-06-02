@@ -36,4 +36,20 @@ export class FiltreService {
     return this.http.put<Filtre>(`${this.BASE_URL}/update`, updateFiltre)
       .pipe(catchError(this.es.handleError()));
   }
+  getFilterByUser(id: number): Observable<Filtre[]> {
+    return this.http.get<Filtre[]>(`${this.BASE_URL}/findByUtilisateurId?id=${id}`)
+      .pipe(catchError(this.es.handleError()));
+  }
+  findById(id: number): Observable<Filtre> {
+    return this.http.get<Filtre>(`${this.BASE_URL}/findById?id=${id}`)
+      .pipe(catchError(this.es.handleError()));
+  }
+  addFiltre(filtre: any) {
+    return this.http.post<Filtre>(`${this.BASE_URL}/new`, filtre)
+      .pipe(catchError(this.es.handleError()));
+  }
+  deleteFiltre(id: number): Observable<void> {
+    return this.http.delete(`${this.BASE_URL}/delete?id=${id}`)
+      .pipe(catchError(this.es.handleError()));
+  }
 }

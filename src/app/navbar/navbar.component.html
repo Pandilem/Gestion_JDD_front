@@ -17,7 +17,7 @@
 
   <div fxLayout="row" fxLayoutAlign.gt-sm="flex-end center" class="nav" fxLayoutAlign="center center">
 
-    <a mat-button routerLink="/">
+    <a mat-button routerLink="/recherche">
       <span class="mat-title" >Recherche</span>
     </a>
     <a mat-button routerLink="/favoris">
@@ -26,8 +26,13 @@
     <a mat-button routerLink="/profil">
       <span class="mat-title" >Profil</span>
     </a>
-    <a mat-button routerLink="/connexion">
+    <a mat-button routerLink="" *ngIf="!authService.isLoggedIn(); else authenticated">
       <span class="mat-title" >Connexion</span>
     </a>
+    <ng-template #authenticated>
+      <a mat-button (click)="authService.logout()">
+        <span class="mat-title" >Deconnexion</span>
+      </a>
+    </ng-template>
   </div>
 </mat-toolbar>

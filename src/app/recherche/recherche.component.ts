@@ -10,6 +10,7 @@ import {Filtre} from '../model/filtre';
 import {FiltreService} from '../services/filtre.service';
 import {Utilisateur} from '../model/utilisateur';
 import {UtilisateurService} from '../services/utilisateur.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-recherche',
@@ -21,10 +22,12 @@ export class RechercheComponent implements OnInit {
 
   selectCrit: Criteres[] = [];
   criteres$: Criteres[];
+  jdds$: Observable<InfoContrat[]>;
   tempFiltre: Filtre;
   constructor(private criteresService: CriteresService,
               private filtreService: FiltreService,
               private utilisateurService: UtilisateurService,
+              private router: Router,
               private infoContratService: InfoContratService) { }
 
   ngOnInit() {
@@ -60,7 +63,10 @@ export class RechercheComponent implements OnInit {
       console.log('update front');
       this.filtreService.putFilter(this.tempFiltre).subscribe(filtre => {
         console.log(filtre);
-        this.infoContratService.findJDDByFiltre(1).subscribe(jdd => console.log(jdd));
+        this.infoContratService.findJDDByFiltre(1).subscribe(jdd => {
+          console.log('récup list jdd recherche', jdd);
+          this.router.navigate(['/recherche/result'], {state: {jdd}});
+        });
       });
     });
   }

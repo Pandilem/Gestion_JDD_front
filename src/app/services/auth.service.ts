@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {ErrorService} from './error.service';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {UtilisateurService} from './utilisateur.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import {Observable} from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient,
               private router: Router,
+              private utilisateurService: UtilisateurService,
               private es: ErrorService) {}
 
   /**
@@ -23,7 +25,7 @@ export class AuthService {
    */
   login(codeRH, motDePasse): Observable<Utilisateur> {
     return this.http.post<Utilisateur>('http://localhost:8080/api/utilisateurs/connect', {codeRH, motDePasse}).pipe(
-      tap(user => sessionStorage.setItem('codeRH', user.codeRH)),
+      tap(user => this.utilisateurService.storeUser(user) ),
         map(result => this.router.navigate(['/recherche'])),
       catchError(this.es.handleError('Pseudo ou mot de passe invalide'))
     );
@@ -34,15 +36,19 @@ export class AuthService {
    * le champ code RH est rempli dans le session storage
    */
   isLoggedIn() {
-    const codeRH = sessionStorage.getItem('codeRH');
-    return (codeRH !== null);
+    const user = this.utilisateurService.getStoreUser();
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
    * Se déconnecter en supprimant le champ code RH du session storage
    */
   logout() {
-    sessionStorage.removeItem('codeRH');
+    sessionStorage.removeItem('user');
     this.router.navigate(['/']);
   }
 

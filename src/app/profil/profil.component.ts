@@ -12,10 +12,11 @@ export class ProfilComponent implements OnInit {
   constructor(private userService: UtilisateurService) { }
 
   ngOnInit() {
-    const codeRH = sessionStorage.getItem('codeRH');
+    this.user = this.userService.getStoreUser();
+   /* const codeRH = sessionStorage.getItem('codeRH');
     this.userService.getUserByCodeRH(codeRH).subscribe(
       user => this.user = user
-    );
+    );*/
   }
 
 }

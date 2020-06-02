@@ -1,1 +1,8 @@
 <div class="mat-display-2" fxLayoutAlign.lt-sm="center" >Favoris</div>
+<div class="card-list" *ngIf="favoris$ | async as favoris">
+  <div *ngFor="let favori of favoris">
+  <app-card (click)="searchJdd(favori.id)"  [text]="favori.nom " [description]="favori.description" >
+  </app-card>
+  <button mat-raised-button (click)="deleteFiltre(favori.id)">supprimier</button>
+</div>
+</div>
