@@ -5,7 +5,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {filter, map} from 'rxjs/operators';
 import {loadConfigurationFromPath} from 'tslint/lib/configuration';
 import {FiltreService} from '../services/filtre.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UtilisateurService} from '../services/utilisateur.service';
 import {log} from 'util';
 
@@ -16,11 +16,9 @@ import {log} from 'util';
 })
 export class ResultComponent implements OnInit {
   jdds: InfoContrat[];
-  newFiltre: Filtre;
   flag = false;
-  filtreTemp: Filtre;
+  submitted = false;
   form: FormGroup;
-  previousUrl: string;
   constructor( private router: Router,
                private utilisateurService: UtilisateurService,
                private filtreService: FiltreService,
@@ -32,18 +30,19 @@ export class ResultComponent implements OnInit {
     }
     this.jdds = window.history.state.jdd;
     this.form = this.fb.group({
-      nom: '',
-      descriptif: ''
+      nom: ['', Validators.required],
+      descriptif: ['', Validators.required]
     });
   }
   addFiltreFavoris(formData) {
-    console.log(formData);
+    this.submitted = true;
+    if (this.form.invalid) { return; }
     this.filtreService.findById(1).subscribe(filtre => {
       const newFiltre = {...filtre, ...formData, utilisateur: {id: this.utilisateurService.getStoreUser().id}};
       delete newFiltre.id;
-      console.log(newFiltre);
       this.filtreService.addFiltre(newFiltre).subscribe(f => console.log(f));
     });
 
   }
+  get f() { return this.form.controls; }
 }

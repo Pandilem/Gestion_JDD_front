@@ -1,7 +1,9 @@
 <div class="mat-display-2" fxLayoutAlign.lt-sm="center" >Profil utilisateur</div>
 <div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
-<div class="mat-title">Nom : {{user.nom | titlecase}}</div>
-<div class="mat-title">Prenom : {{user.prenom | titlecase}}</div>
-<div class="mat-title">Code RH : {{user.codeRH | titlecase}}</div>
-<div class="mat-title">Email : {{user.email | titlecase}}</div>
+  <div class="detail-presentation">
+    <p class="detail">Nom : {{user.nom | titlecase}}</p>
+    <p class="detail">Prenom : {{user.prenom | titlecase}}</p>
+    <p class="detail">Code RH : {{user.codeRH | titlecase}}</p>
+    <p class="detail">Email : {{user.email | titlecase}}</p>
+  </div>
 </div>

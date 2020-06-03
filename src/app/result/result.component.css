@@ -2,3 +2,16 @@
   text-align: center;
   margin: 50px auto 20px auto;
 }
+.field-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 420px;
+}
+.mat-raised-button {
+   margin:  20px auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }

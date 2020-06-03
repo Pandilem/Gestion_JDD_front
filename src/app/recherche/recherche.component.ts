@@ -22,7 +22,6 @@ export class RechercheComponent implements OnInit {
 
   selectCrit: Criteres[] = [];
   criteres$: Criteres[];
-  jdds$: Observable<InfoContrat[]>;
   tempFiltre: Filtre;
   constructor(private criteresService: CriteresService,
               private filtreService: FiltreService,
@@ -31,9 +30,8 @@ export class RechercheComponent implements OnInit {
               private infoContratService: InfoContratService) { }
 
   ngOnInit() {
-    console.log(this.criteresService);
+
     this.criteresService.getAllCriteres().subscribe(criteres => this.criteres$ = criteres);
-    console.log(this.criteres$);
   }
   searchFilter() {
     this.criteresService.getCriteresByNomLike(this.searchWord).subscribe(criteres => {
@@ -47,7 +45,6 @@ export class RechercheComponent implements OnInit {
       }
     });
     const selectedId = selected.map(s => s.value);
-    //const allId = this.criteres$.map( crit => crit.id);
     this.criteres$.forEach( crit => {
       if (!this.includeCrit(crit, selectedId) && this.includeCrit(crit, this.selectCrit)) {
         this.selectCrit.splice(this.selectCrit.indexOf(crit, 1));
@@ -55,16 +52,11 @@ export class RechercheComponent implements OnInit {
     console.log(this.selectCrit);
   }
   searchJdd() {
-    console.log('searchJDD');
     this.utilisateurService.getUserById(1).subscribe(usertemp => {
-      console.log('user' , usertemp, usertemp.id);
       this.tempFiltre = {
         id : 1, nom: 'tempFiltre', descriptif: 'Filtre Temporaire de recherche', utilisateur: usertemp,  criteres: this.selectCrit}
-      console.log('update front');
       this.filtreService.putFilter(this.tempFiltre).subscribe(filtre => {
-        console.log(filtre);
         this.infoContratService.findJDDByFiltre(1).subscribe(jdd => {
-          console.log('récup list jdd recherche', jdd);
           this.router.navigate(['/recherche/result'], {state: {jdd}});
         });
       });

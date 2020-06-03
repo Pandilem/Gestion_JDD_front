@@ -1,0 +1,10 @@
+.card {
+  cursor: pointer;
+  padding: 4px;
+  width: 250px;
+  margin: 5px;
+}
+.title {
+  text-align: center;
+  padding: 15px 0;
+}

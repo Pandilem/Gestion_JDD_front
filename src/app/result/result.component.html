@@ -1,21 +1,26 @@
 <div class="mat-display-2" fxLayoutAlign.lt-sm="center" >Résultat de la recherche</div>
-
-<div class="card-list" *ngIf="jdds">
-  <app-card *ngFor="let jdd of jdds" [text]="jdd.idpph" >
-  </app-card>
+<div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
+  <div class="card-list" *ngIf="jdds">
+    <app-card *ngFor="let jdd of jdds" [text]="jdd.idpph" >
+    </app-card>
+  </div>
 </div>
+<div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
 <a *ngIf="flag">
+  <p >Ajouter la rechercher aux favoris</p>
   <form [formGroup]="form" (ngSubmit)="addFiltreFavoris(form.value)">
     <mat-form-field>
-      <mat-label>Nom</mat-label>
+      <mat-label>Nom de la recherche</mat-label>
       <input matInput type="text" formControlName="nom">
+      <mat-error *ngIf="submitted && f.nom.errors== null">Vous devez saisir un nom de favoris</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Description</mat-label>
+      <mat-label>Description de la recherche</mat-label>
       <input matInput type="text" formControlName="descriptif">
+      <mat-error *ngIf="submitted && f.descriptif.errors">Vous devez saisir une description du favoris</mat-error>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary">Ajouter aux favoris</button>
   </form>
 </a>
-
+</div>
 <button mat-raised-button  onclick="history.go(-1)">Retour</button>
