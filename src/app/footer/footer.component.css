@@ -4,6 +4,8 @@
   grid-template-rows: repeat(4, 25px);
   background: rgba(17, 17, 23, 0.32);
   width: 100%;
+  bottom: 0 ;
+  position:absolute;
 }
 
 img, .img {

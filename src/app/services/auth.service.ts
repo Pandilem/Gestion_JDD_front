@@ -18,7 +18,7 @@ export class AuthService {
 
   /**
    * Vérifier si les identifiants correspondent:
-   *  - Si oui enregistrer le pseudo dans le session storage
+   *  - Si oui enregistrer le code RH dans le session storage
    *  - Si non afficher un message d'erreur
    * @param codeRH Le champ code RH du formulaire
    * @param motDePasse Le champ mot de passe du formulaire

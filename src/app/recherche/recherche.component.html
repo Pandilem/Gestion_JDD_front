@@ -1,13 +1,13 @@
 <div class="mat-display-2"  fxLayoutAlign.lt-sm="center">Recherche d'un JDD</div>
-<div class="field-container" >
+<div class="field-container"  fxLayout.xs="row" fxLayoutAlign.xs="center">
   <mat-form-field appearance="outline">
     <input type="text" matInput placeholder="Rechercher un critere" [(ngModel)]="searchWord"
            (keydown.enter)="searchFilter()">
     <mat-icon (click)="searchFilter()" matSuffix>search</mat-icon>
   </mat-form-field>
-</div>
 
-<div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
+
+<div class="field-container" fxLayout.xs="column" fxLayoutAlign.xs="center">
 <mat-selection-list (selectionChange)="onChange(criteres.selectedOptions.selected) " #criteres>
   <mat-list-option [selected]="includeCrit(critere, selectCrit)" class="seleclist" [value]="critere" *ngFor="let critere of criteres$">
     {{critere.nom}}
@@ -16,4 +16,5 @@
 </div>
 <div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
 <button mat-raised-button  (click)="searchJdd()">Rechercher un JDD</button>
+</div>
 </div>

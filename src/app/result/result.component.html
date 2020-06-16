@@ -1,7 +1,7 @@
 <div class="mat-display-2" fxLayoutAlign.lt-sm="center" >Résultat de la recherche</div>
 <div class="field-container" fxLayout.xs="row" fxLayoutAlign.xs="center">
   <div class="card-list" *ngIf="jdds">
-    <app-card *ngFor="let jdd of jdds" [text]="jdd.idpph" >
+    <app-card *ngFor="let jdd of jdds" [nom]="jdd.idpph" >
     </app-card>
   </div>
 </div>

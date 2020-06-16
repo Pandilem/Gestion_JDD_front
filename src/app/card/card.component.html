@@ -1,6 +1,11 @@
 <div class="card mat-elevation-z4">
-    <div class="title">{{text}}</div>
+  <a *ngIf="flag">
+  <div class="title">{{text}}</div>
   <ng-content></ng-content>
-
+  </a>
+  <a *ngIf="!flag">
+    <div class="title">JDD : {{nom}}</div>
+    <ng-content></ng-content>
+  </a>
 </div>
 
