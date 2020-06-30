@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {InfoContrat} from '../model/infoContrat';
-import {Filtre} from '../model/filtre';
+import {InfoContrat} from '../../model/infoContrat';
+import {Filtre} from '../../model/filtre';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, map} from 'rxjs/operators';
 import {loadConfigurationFromPath} from 'tslint/lib/configuration';
-import {FiltreService} from '../services/filtre.service';
+import {FiltreService} from '../../services/filtre.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UtilisateurService} from '../services/utilisateur.service';
+import {UtilisateurService} from '../../services/utilisateur.service';
 import {log} from 'util';
+import {ErrorService} from '../../services/error.service';
 
 @Component({
   selector: 'app-result',
@@ -22,7 +23,8 @@ export class ResultComponent implements OnInit {
   constructor( private router: Router,
                private utilisateurService: UtilisateurService,
                private filtreService: FiltreService,
-               private fb: FormBuilder) { }
+               private fb: FormBuilder,
+               private es: ErrorService) { }
 
   ngOnInit() {
     if (this.router.url.startsWith('/recherche')) {

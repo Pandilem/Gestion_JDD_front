@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {CriteresService} from '../services/criteres.service';
-import {Observable} from 'rxjs';
-import {Criteres} from '../model/criteres';
-import {InfoContratService} from '../services/info-contrat.service';
-import {InfoContrat} from '../model/infoContrat';
-import {isLineBreak} from 'codelyzer/angular/sourceMappingVisitor';
+import {CriteresService} from '../../services/criteres.service';
+import {Criteres} from '../../model/criteres';
+import {InfoContratService} from '../../services/info-contrat.service';
 import {MatListOption} from '@angular/material';
-import {Filtre} from '../model/filtre';
-import {FiltreService} from '../services/filtre.service';
-import {Utilisateur} from '../model/utilisateur';
-import {UtilisateurService} from '../services/utilisateur.service';
+import {Filtre} from '../../model/filtre';
+import {FiltreService} from '../../services/filtre.service';
+import {UtilisateurService} from '../../services/utilisateur.service';
 import {Router} from '@angular/router';
 
 @Component({

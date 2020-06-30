@@ -14,6 +14,7 @@
 
 .form-content {
   padding: 30px;
+  text-align: center;
 }
 mat-form-field {
   width: 100%;

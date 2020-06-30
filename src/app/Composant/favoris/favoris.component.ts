@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {UtilisateurService} from '../services/utilisateur.service';
-import {Utilisateur} from '../model/utilisateur';
-import {FiltreService} from '../services/filtre.service';
-import {Filtre} from '../model/filtre';
+import {UtilisateurService} from '../../services/utilisateur.service';
+import {Utilisateur} from '../../model/utilisateur';
+import {FiltreService} from '../../services/filtre.service';
+import {Filtre} from '../../model/filtre';
 import {Observable} from 'rxjs';
-import {InfoContrat} from '../model/infoContrat';
+import {InfoContrat} from '../../model/infoContrat';
 import {Router} from '@angular/router';
-import {InfoContratService} from '../services/info-contrat.service';
+import {InfoContratService} from '../../services/info-contrat.service';
 
 @Component({
   selector: 'app-favoris',

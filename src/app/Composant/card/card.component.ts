@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FiltreService} from '../services/filtre.service';
+import {FiltreService} from '../../services/filtre.service';
 import {isEmpty} from 'rxjs/operators';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 

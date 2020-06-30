@@ -10,19 +10,20 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { RechercheComponent } from './recherche/recherche.component';
+import { NavbarComponent } from './Composant/navbar/navbar.component';
+import { RechercheComponent } from './Composant/recherche/recherche.component';
 import { RouterModule, Routes} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FavorisComponent } from './favoris/favoris.component';
-import { ProfilComponent } from './profil/profil.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { PageComponent } from './page/page.component';
-import { FooterComponent } from './footer/footer.component';
+import { FavorisComponent } from './Composant/favoris/favoris.component';
+import { ProfilComponent } from './Composant/profil/profil.component';
+import { ConnexionComponent } from './Composant/connexion/connexion.component';
+import { PageComponent } from './Composant/page/page.component';
+import { FooterComponent } from './Composant/footer/footer.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './Composant/card/card.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ResultComponent } from './result/result.component';
+import { ResultComponent } from './Composant/result/result.component';
+import {ExtendedModule, FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 
 const routes: Routes =  [
   {path: '', component: ConnexionComponent},
@@ -30,7 +31,8 @@ const routes: Routes =  [
   {path: 'profil', component: ProfilComponent},
   {path: 'favoris', component: FavorisComponent},
   {path: 'result', component: ResultComponent},
-  {path: 'recherche/result', component: ResultComponent}
+  {path: 'recherche/result', component: ResultComponent},
+  {path: '**', redirectTo: '/recherche'}
 ];
 
 @NgModule({
@@ -63,11 +65,11 @@ const routes: Routes =  [
         MatDatepickerModule,
         MatNativeDateModule,
         MatSidenavModule,
-      MatSelectModule,
-      FormsModule,
-      MatSnackBarModule,
-      MatExpansionModule,
-      MatProgressSpinnerModule
+        MatSelectModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule
     ],
   providers: [],
   bootstrap: [AppComponent]
