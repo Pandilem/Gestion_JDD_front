@@ -12,8 +12,15 @@
 }
 
 .mat-raised-button {
-
   display: flex;
   flex-wrap: wrap;
-
+}
+.ListCrit{
+  margin: 20px;
+}
+.mat-list-option{
+  width: 200px;
+  margin: 10px;
+  flex : 0 0 200px;
+  border: 1px lightgray solid;
 }

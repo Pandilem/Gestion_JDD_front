@@ -3,6 +3,8 @@
   padding: 4px;
   width: 250px;
   margin: 5px;
+  border: 1px lightgray solid;
+
 }
 .title {
   text-align: center;

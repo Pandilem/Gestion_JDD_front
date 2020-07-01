@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CriteresService} from '../../services/criteres.service';
 import {Criteres} from '../../model/criteres';
 import {InfoContratService} from '../../services/info-contrat.service';
-import {MatListOption} from '@angular/material';
+import {MatListOption, MatSelectionList} from '@angular/material';
 import {Filtre} from '../../model/filtre';
 import {FiltreService} from '../../services/filtre.service';
 import {UtilisateurService} from '../../services/utilisateur.service';
 import {Router} from '@angular/router';
+import {log} from 'util';
 
 @Component({
   selector: 'app-recherche',
@@ -15,7 +16,7 @@ import {Router} from '@angular/router';
 })
 export class RechercheComponent implements OnInit {
   searchWord: string;
-
+  @ViewChild('criteres') selectionList: MatSelectionList;
   selectCrit: Criteres[] = [];
   criteres$: Criteres[];
   tempFiltre: Filtre;
@@ -45,7 +46,6 @@ export class RechercheComponent implements OnInit {
       if (!this.includeCrit(crit, selectedId) && this.includeCrit(crit, this.selectCrit)) {
         this.selectCrit.splice(this.selectCrit.indexOf(crit, 1));
       }});
-    console.log(this.selectCrit);
   }
   searchJdd() {
     this.utilisateurService.getUserById(1).subscribe(usertemp => {

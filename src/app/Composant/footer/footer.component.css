@@ -50,7 +50,6 @@ p {
     justify-items: center;
     padding-top: 5px;
     bottom: 0 ;
-    position:absolute;
   }
 
   p {
@@ -68,6 +67,5 @@ p {
     font-size: 12px;
     margin-top: 5px;
     justify-self: end;
-
   }
 }
